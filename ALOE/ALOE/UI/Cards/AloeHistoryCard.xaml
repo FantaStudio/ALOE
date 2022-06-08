@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:ALOE.UI.Converters"
+             x:Class="ALOE.UI.AloeHistoryCard"
+             BackgroundColor="{StaticResource GrayVioletDark}">
+    <ContentView.Resources>
+        <converters:BonusSubConverter x:Key="bonusSubConverter"/>
+        <converters:DateTimeConverter x:Key="dateTimeConverter"/>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Frame Margin="15,10" CornerRadius="10" Padding="10" BackgroundColor="{DynamicResource VioletDark}">
+            <Grid ColumnSpacing="0" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="40*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout>
+                    <Label Margin="5,0" Text="{Binding Type}" Style="{StaticResource ParBold}" FontSize="Medium"/>
+                    <Label Margin="5,0,0,0" Text="{Binding FuelObjectID, StringFormat='Номер заправки: {0}' }" Style="{StaticResource Par}"/>
+                    <Label Margin="5,0,0,0" Text="{Binding DispenserNumber, StringFormat='Номер колонки: {0}' }" Style="{StaticResource Par}"/>
+                    <Label Margin="5,0,0,0" Text="{Binding FuelType, StringFormat='Тип топлива: {0}' }" Style="{StaticResource Par}"/>
+                    <Label Margin="5,0,0,5" Text="{Binding LitresCount, StringFormat='Кол-во литров: {0}' }" Style="{StaticResource Par}"/>
+                </StackLayout>
+                <Grid Grid.Column="1">
+                    <StackLayout VerticalOptions="Center" Margin="0,-5,0,0">
+                        <Label Text="{Binding Cost,StringFormat='-{0}Р'}" Style="{StaticResource ParBold}" FontSize="Large" HorizontalTextAlignment="Center"/>
+                        <Label Text="{Binding SubBonusCount, StringFormat='Потрачено: {0} балов' }" IsVisible="{Binding SubBonusCount, Converter={StaticResource bonusSubConverter}}" Margin="0,-5,0,0" Style="{StaticResource Par}" FontSize="13" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <Label Margin="0,0,5,5" Text="{Binding Date, Converter={StaticResource dateTimeConverter}}" Style="{StaticResource Par}" VerticalOptions="End" HorizontalOptions="End"/>
+                </Grid>
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

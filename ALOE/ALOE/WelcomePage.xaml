@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:wmodel ="clr-namespace:ALOE.UI.Welcome"
+             x:Class="ALOE.WelcomePage">
+
+    <ContentPage.BindingContext>
+        <wmodel:WelcomeViewModel/>
+    </ContentPage.BindingContext>
+    <Grid>
+        <Image x:Name="CurrentImage" Source="welcome_first.jpeg" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+        <BoxView>
+            <BoxView.Background>
+                <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                    <GradientStop Color="#77202020" Offset="0"/>
+                    <GradientStop Color="#615599" Offset="0.9"/>
+                    <GradientStop Color="#202020" Offset="1"/>
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+        <Grid RowDefinitions="Auto,Auto,Auto" Margin="30,30,30,100" RowSpacing="40" VerticalOptions="End">
+            <CarouselView x:Name="cvOnboarding" IndicatorView="LandingIndicator" ItemsSource="{Binding Onboardings}">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label VerticalOptions="End" Text="{Binding Header}" Margin="0,0,0,40" TextColor="White" FontSize="Large" FontAttributes="Bold"
+                                    HorizontalOptions="Start" FontFamily="Roboto"/>
+                            <Label VerticalOptions="End" Text="{Binding Description}" TextColor="White" FontSize="Caption"
+                                    HorizontalOptions="Start"/>
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <IndicatorView x:Name="LandingIndicator" Grid.Row="1" IndicatorsShape="Circle" 
+                           IndicatorColor="WhiteSmoke" SelectedIndicatorColor="#B689DB"/>
+            <StackLayout Grid.Row="2" Orientation="Horizontal" Spacing="20" VerticalOptions="End" HorizontalOptions="Center">
+                <Button x:Name="RegisterButton" Clicked="RegisterButton_Clicked" Text="Регистрация" Padding="10" TextColor="White" HeightRequest="50"
+                        BackgroundColor="#615599" BorderWidth="0" CornerRadius="25"/>
+                <Button x:Name="EnterButton" Clicked="EnterButton_Clicked" Text="Вход" Padding="10" HeightRequest="50"
+                        BackgroundColor="#D4D4D4 " BorderWidth="0" CornerRadius="25" />
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

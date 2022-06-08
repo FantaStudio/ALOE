@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ALOE.NoConnection"
+             BackgroundColor="{StaticResource GrayVioletDark}">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Image Source="logo" WidthRequest="100" HeightRequest="100" Margin="0,0,0,30"/>
+            <Label Text="Вы не подключены к интернету.
+                   
+                   
+                   Чтобы продолжить работу, пожалуйста, подключитесь"
+                   HorizontalTextAlignment="Center"
+                   FontSize="15"
+                   Style="{StaticResource ParBold}" Margin="20"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

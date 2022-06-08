@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ALOE"
+             x:Class="ALOE.MainMenu" FlyoutIsPresented="True">
+    <Shell.FlyoutBackground>
+        <SolidColorBrush Color="{DynamicResource GrayDark}"/>
+    </Shell.FlyoutBackground>
+
+    <Shell.ItemTemplate>
+        <DataTemplate >
+            <Grid>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="VisualStateManager.VisualStateGroups">
+                            <VisualStateGroupList>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{DynamicResource VioletDark}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateGroupList>
+                        </Setter>
+                    </Style>
+                </Grid.Style>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.8*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding FlyoutIcon}" Margin="5" HeightRequest="45" />
+                <Label Grid.Column="1" Text="{Binding Title}" VerticalTextAlignment="Center" Style="{DynamicResource ParBold}" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Shell.FlyoutHeader>
+        <Image Aspect="AspectFit"
+               Source="logo" WidthRequest="50" HeightRequest="50" Margin="20" />
+    </Shell.FlyoutHeader>
+    
+    
+    <FlyoutItem Title="Главная">
+        <Tab Title="Главная" Icon="home_icon">
+            <ShellContent>
+                <local:Home/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Заправки" Icon="map_icon">
+            <ShellContent>
+                <local:MapPage/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Профиль" Icon="profile_icon">
+            <ShellContent>
+                <local:Profile/>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Новости">
+        <ShellContent>
+            <local:NewsPage/>
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Акции">
+        <ShellContent>
+            <local:StocksPage/>
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="История">
+        <ShellContent>
+            <local:HistoryPage/>
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Политика конфиденциальности">
+        <ShellContent>
+            <local:PrivacyPolicyPage/>
+        </ShellContent>
+    </FlyoutItem>
+    <Shell.FlyoutFooter>
+        <StackLayout>
+            <Label Text="© Aloe Mobile 2021"
+               TextColor="GhostWhite"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" Margin="0,0,0,10" />
+        </StackLayout>
+    </Shell.FlyoutFooter>
+</Shell>

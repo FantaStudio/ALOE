@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ALOE.MapPage"
+             xmlns:local="clr-namespace:ALOE"
+             xmlns:maps ="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             BackgroundColor="{StaticResource GrayVioletDark}">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="140"/>
+            </Grid.RowDefinitions>
+            <local:AloeMap x:Name="MainMap" IsShowingUser="True" ShowMeButton="True" ZoomButtons="True" MyLocationEnabled="True" Grid.RowSpan="2"/>
+            <Frame x:Name="FuelInfoWindow" CornerRadius="30" Margin="0,0,0,-30 " BackgroundColor="{StaticResource GrayVioletDark}" Opacity="1" Grid.Row="1" 
+                   IsVisible="{Binding Source={x:Reference Name=MainMap}, Path=FuelInfoIsShowed}">
+                <Grid Margin="5,10,0,10" RowSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="130"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Margin="0,0,0,5" x:Name="FuelObjectAddressLabel" Grid.Row="0" Text="Адрес: " FontSize="16" Style="{StaticResource Par}" TextColor="White"/>
+                    <Label Margin="0,0,0,5" x:Name="FuelObjectTypeLabel" Grid.Row="1" Text="Тип АЗС: Маленькая" FontSize="16" Style="{StaticResource Par}" TextColor="White"/>
+
+                    <Button x:Name="CreateRouteToFuelStation" Clicked="CreateRouteToFuelStation_Clicked" Text="Маршрут" Grid.Column="1" 
+                            WidthRequest="100" HeightRequest="40"/>
+                    <Button Grid.Row="1" x:Name="RefillStart" Clicked="RefillStart_Clicked" Text="Заправиться" Grid.Column="1" 
+                            WidthRequest="100" HeightRequest="40"/>
+                </Grid>
+            </Frame>
+            <ActivityIndicator x:Name="Loader"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

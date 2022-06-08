@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ALOE.PrivacyPolicyPage" BackgroundColor="{StaticResource GrayVioletDark}">
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+            <StackLayout HorizontalOptions="Center" Margin="10,20">
+                <Label Text="Скачать документ лицензионного соглашения от 09.12.2021 можно нажав на кнопку &quot;Скачать&quot;" Style="{DynamicResource Par}" HorizontalTextAlignment="Center"/>
+                <Button x:Name="SavePrivacyPolicyButton" HorizontalOptions="Center" Text="Скачать" Clicked="SavePrivacyPolicyButton_Clicked" WidthRequest="100" Margin="0,20,0,0"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

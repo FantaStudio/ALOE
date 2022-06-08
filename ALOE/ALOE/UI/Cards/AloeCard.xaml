@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ALOE.UI.AloeCard"
+             BackgroundColor="{StaticResource GrayVioletDark}" >
+  <ContentView.Content>
+        <Frame HeightRequest="145" CornerRadius="10" BackgroundColor="#394055" Padding="0">
+            <Grid ColumnSpacing="0" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55"/>
+                    <RowDefinition Height="47"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.20*"/>
+                    <ColumnDefinition Width="0.35*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle BackgroundColor="#7f5bb9">
+                    <Rectangle.Clip>
+                        <EllipseGeometry Center="0,0" RadiusX="60" RadiusY="55" />
+                    </Rectangle.Clip>
+                </Rectangle>
+                <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="2" BackgroundColor="#7F7F5BB9">
+                    <Rectangle.Clip>
+                        <EllipseGeometry Center="0,0" RadiusX="100" RadiusY="100" />
+                    </Rectangle.Clip>
+                </Rectangle>
+                <Rectangle Grid.ColumnSpan="3" Grid.RowSpan="3" BackgroundColor="#407F5BB9">
+                    <Rectangle.Clip>
+                        <EllipseGeometry Center="0,0" RadiusX="160" RadiusY="136" />
+                    </Rectangle.Clip>
+                </Rectangle>
+                <Label Text="ALOE" Margin="5,10,0,0" Style="{StaticResource ParBold}"/>
+                <Label Text="{Binding Balance}" Style="{StaticResource ParBold}" VerticalOptions="Center"
+                       HorizontalOptions="End" Margin="10" Grid.RowSpan="3" Grid.ColumnSpan="4"
+                       FontSize="16"/>
+                <Label Text="{Binding Number}" Grid.RowSpan="3" Grid.ColumnSpan="4" 
+                                   VerticalOptions="End" Style="{StaticResource Par}" Margin="10"/>
+                <Label Text="Бонусная карта" Grid.RowSpan="3" Grid.ColumnSpan="4" 
+                                   VerticalOptions="End" HorizontalOptions="End" Style="{StaticResource Par}" Margin="10"/>
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

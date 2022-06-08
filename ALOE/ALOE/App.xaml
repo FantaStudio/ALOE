@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ALOE.App"
+             xmlns:local="clr-namespace:ALOE"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:converters="clr-namespace:ALOE.UI.Converters"
+             >
+    <Application.Resources>
+        <ResourceDictionary>
+            <converters:DateConverter x:Key="dateConverter"/>
+  
+            <Color x:Key="VioletLight">#a074c4</Color>
+            <Color x:Key="Violet">#796bb5</Color>
+            <Color x:Key="VioletDark">#615599</Color>
+            <Color x:Key="GrayLight">#686868</Color>
+            <Color x:Key="Gray">#3e3e42</Color>
+            <Color x:Key="GrayDark">#353536</Color>
+            <Color x:Key="GrayVioletDark">#252329</Color>
+
+            <OnPlatform x:TypeArguments="x:String"
+                        x:Key="Roboto">
+                <On Platform="Android"
+                    Value="roboto.ttf#Roboto" />
+            </OnPlatform>
+            
+            <OnPlatform x:TypeArguments="x:String"
+                        x:Key="RobotoBold">
+                <On Platform="Android"
+                    Value="robotoBold.ttf#RobotoBold" />
+            </OnPlatform>
+            
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="TextColor" Value="#353536" />
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+            
+            <Style TargetType="local:AloeEntry">
+                <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="PlaceholderColor" Value="Gray"/>
+                <Setter Property="TintColor" Value="White"/>
+                <Setter Property="HighlightColor" Value="White"/>
+                <Setter Property="android:VisualElement.IsLegacyColorModeEnabled" Value="False"/>
+            </Style>
+            
+            <Style TargetType="Label" x:Key="Par">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="ParBold">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontFamily" Value="{StaticResource RobotoBold}" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style TargetType="ActivityIndicator">
+                <Setter Property="Color" Value="{StaticResource VioletLight}"/>
+                <Setter Property="WidthRequest" Value="64"/>
+                <Setter Property="HeightRequest" Value="64"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

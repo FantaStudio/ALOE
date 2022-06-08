@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ALOE.Oauth"
+             xmlns:local="clr-namespace:ALOE"
+             >
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0.2,0.9">
+            <GradientStop Color="#342c44" Offset="0.2"/>
+            <GradientStop Color="#26212f" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <ActivityIndicator x:Name="Loader"/>
+                <StackLayout Margin="50,50,50,30" VerticalOptions="Center">
+                    <Image Source="logo" WidthRequest="100" HeightRequest="100" Margin="0,0,0,70"/>
+                    <Label x:Name="OauthTitle" FontSize="25" Style="{StaticResource ParBold}"/>
+                    <Label x:Name="OauthDescription"
+                       TextColor="#CACACA" FontSize="17" Margin="0,0,0,30" Style="{StaticResource Par}"/>
+                    <local:AloeEntry x:Name="LoginBox" FontFamily="Roboto" Placeholder="Логин" />
+                    <local:AloeEntry x:Name="PasswordBox" FontFamily="Roboto" IsPassword="True" Placeholder="Пароль"/>
+                    <Button x:Name="ActionButton" Clicked="ActionButton_Clicked" Margin="0,40,0,0" Text="Войти"/>
+                    <StackLayout  x:Name="PrivacyPolicyBlock" BackgroundColor="Transparent">
+                        <Label FontSize="12" Text="Нажимая &quot;Зарегистрироваться&quot; Вы соглашаетесь с" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <Grid BackgroundColor="Transparent">
+                            <Label Margin="0,0,0,0" x:Name="PrivacyPolicyLabel" FontSize="14" Text="Политикой Конфиденциальности" TextDecorations="Underline" 
+                           TextColor="White" HorizontalTextAlignment="Center"/>
+                            <Button Margin="0,0,0,0" WidthRequest="100"  HeightRequest="30" x:Name="PrivacyPolicyButton" Clicked="PrivacyPolicyButton_Clicked" BackgroundColor="Transparent"/>
+                        </Grid>
+                    </StackLayout>
+                    <Grid BackgroundColor="Transparent">
+                        <Label x:Name="QuestionText" FontSize="16" Text="" TextDecorations="Underline" 
+                           TextColor="White" HorizontalTextAlignment="Center"/>
+                        <Button WidthRequest="100" x:Name="QuestionButton" Clicked="QuestionButton_Clicked" BackgroundColor="Transparent"/>
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
