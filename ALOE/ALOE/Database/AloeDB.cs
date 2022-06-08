@@ -263,7 +263,7 @@ namespace ALOE.Database
         {
             var client = await GetClient(login);
             if (client is null) return null;
-            return await Connection.Table<Transaction>()?.Where(x => x.ClientID == client.ID)?.ToListAsync();
+            return await Connection.Table<Transaction>()?.Where(x => x.ClientID == client.ID)?.OrderByDescending(x => x.Date).ToListAsync();
         }
 
         public static async Task<Client> GetClient(string login)

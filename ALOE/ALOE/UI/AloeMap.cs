@@ -32,12 +32,15 @@ namespace ALOE
         public int ButtonsBottomPadding { get; set; }
 
         public void MoveToRussia() => MoveToRegion(MapSpan.FromCenterAndRadius(new Position(60, 100), Distance.FromKilometers(1000)));
+
         public void MoveToPosition(Position pos, Distance dist = default)
         {
             if (dist == default) dist = Distance.FromKilometers(1);
             MoveToRegion(MapSpan.FromCenterAndRadius(pos, dist));
         }
+
         public void MoveToLocation(Xamarin.Essentials.Location location, Distance dist = default) => MoveToPosition(new Position(location.Latitude, location.Longitude),dist);
+
         public AloeMap()
         {
             // RUSSIA

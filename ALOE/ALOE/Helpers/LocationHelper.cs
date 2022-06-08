@@ -13,7 +13,7 @@ namespace ALOE.Helpers
             try
             {
                 if (!IsLocationAvailable) return null;
-                return await Xamarin.Essentials.Geolocation.GetLocationAsync(new GeolocationRequest
+                return await Geolocation.GetLocationAsync(new GeolocationRequest
                 {
                     DesiredAccuracy = GeolocationAccuracy.Best,
                     Timeout = TimeSpan.FromSeconds(1),

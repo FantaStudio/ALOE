@@ -74,7 +74,11 @@ namespace ALOE
         private async void MoveToMyPosition()
         {
             Location myLocation = await LocationHelper.GetLocation();
-            if (myLocation == null) return;
+            if (myLocation == null)
+            {
+                MainMap.MoveToLocation(new Location(46.347609, 48.030168), Distance.FromKilometers(7));
+                return;
+            }
 
             MainMap.MoveToLocation(myLocation);
         }
@@ -194,7 +198,7 @@ namespace ALOE
                 Location myLocation = await LocationHelper.GetLocation();
                 if (myLocation == null)
                 {
-                    throw new Exception("Не удалось найти ваше местоположение, проверьте, включена ли у вас геолокация");
+                    throw new Exception("Не удалось найти ваше местоположение, проверьте включена ли у вас геолокация");
                 }
 
                 Route rout = await Route.GetRoute(myLocation, new Location(SelectedFuelObject.Latitude, SelectedFuelObject.Longitude)).TimeoutAfter(TimeSpan.FromSeconds(25));
