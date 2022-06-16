@@ -8,7 +8,7 @@ namespace ALOE.UI.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ((DateTime)value).ToString("dd.MM.yyyy h:mm");
+            return ((DateTime)value).ToString("dd.MM.yyyy HH:mm");
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

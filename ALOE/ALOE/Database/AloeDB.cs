@@ -243,8 +243,14 @@ namespace ALOE.Database
         public static async Task<bool?> TryRegister(string login, string password)
         {
             if (await Connection.Table<Client>().Where(x => x.Login == login).CountAsync() > 0)
+            {
                 return null;
-            return  await Connection.InsertAsync(new Client() {Login = login, Password = password }) > 0;
+            }
+
+            var result = await Connection.InsertAsync(new Client() { Login = login, Password = password });
+            var client = await Connection.Table<Client>().Where(x => x.Login == login).FirstOrDefaultAsync();
+            await Connection.InsertAsync(new ClientCard { ClientID = client.ID, Bonus = 50  });
+            return result > 0;
         }
 
         public static async Task<List<FuelType>> GetFuelTypes()
@@ -255,7 +261,10 @@ namespace ALOE.Database
         public static async Task<List<ClientCard>> GetClientCards(string login)
         {
             var client = await GetClient(login);
-            if (client is null) return null;
+            if (client is null)
+            {
+                return null;
+            }
             return await Connection.Table<ClientCard>()?.Where(x => x.ClientID == client.ID)?.ToListAsync();
         }
 
@@ -302,7 +311,7 @@ namespace ALOE.Database
             var cards = await GetClientCards(login);
             try
             {
-                var card = cards?.Last();
+                var card = cards?.LastOrDefault();
                 var bonus = (int)cost / Main.BonusEqual;
                 var transaction = new Transaction()
                 {

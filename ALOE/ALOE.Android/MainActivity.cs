@@ -81,24 +81,25 @@ namespace ALOE.Droid
             {
                 if (resultCode == Result.Ok && DownloadFileHelper.FileBytes != null)
                 {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(this);
                     try
                     {
                         var savedFileUri = data.Data;
                         var fileStream = Application.ContentResolver?.OpenOutputStream(savedFileUri);
                         fileStream.Write(DownloadFileHelper.FileBytes);
+                        fileStream.Flush();
                         fileStream.Close();
 
-                        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-                        alert.SetTitle("Успешно");
-                        alert.SetMessage("Файл сохранён по пути: " + savedFileUri.Path);
-                        alert.Create();
-                        alert.Show();
+                        alert.SetTitle("Отлично");
+                        alert.SetMessage("Файл успешно сохранён");
                     }
                     catch(Exception)
                     {
-                        AlertDialog.Builder alert = new AlertDialog.Builder(this);
                         alert.SetTitle("Ошибка");
                         alert.SetMessage("Неудалось сохранить файл, произошла неизвестная ошибка.");
+                    }
+                    finally
+                    {
                         alert.Create();
                         alert.Show();
                     }

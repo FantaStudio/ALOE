@@ -73,10 +73,11 @@ namespace ALOE
 
         private async void MoveToMyPosition()
         {
+            MainMap.MoveToLocation(new Location(46.347609, 48.030168), Distance.FromKilometers(7));
+
             Location myLocation = await LocationHelper.GetLocation();
             if (myLocation == null)
             {
-                MainMap.MoveToLocation(new Location(46.347609, 48.030168), Distance.FromKilometers(7));
                 return;
             }
 
@@ -303,9 +304,10 @@ namespace ALOE
                 if (!payAccept) return;
 
                 bool buyResult = false;
-                var userBonusCard = (await AloeDB.GetClientCards(Main.CURRENT_USER_LOGIN))?.Last();
-                if (userBonusCard != null)
+                var cards = await AloeDB.GetClientCards(Main.CURRENT_USER_LOGIN);
+                if (cards != null && cards.Count > 0)
                 {
+                    var userBonusCard = cards.Last();
                     var bonusCanUse = userBonusCard.Bonus;
                     var maxBonusAmountForCost = (int)fullPrice * Main.MaxUseBonusPercent / 100;
                     if(bonusCanUse > maxBonusAmountForCost)
